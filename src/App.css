@@ -1,21 +1,160 @@
-html {
-  scroll-behavior: smooth;
-}
-
-body {
-  padding: 0;
-  margin: 0;
-}
-
+/* Root color variables */
 :root {
-  --div-bg-color: rgba(128, 128, 128, 0.626);
+  --color-light-bg: #ffffff;
+  --color-light-text: #111111;
+  --color-light-div: #f0f0f0;
+  --color-light-btn: #eee;
+  --color-light-input: #fff;
+  --color-light-input-border: #ccc;
+
+  --color-dark-bg: #121212;
+  --color-dark-text: #ffffff;
+  --color-dark-div: #1e1e1e;
+  --color-dark-btn: #333;
+  --color-dark-input: #222;
+  --color-dark-input-border: #555;
 }
 
+/* Body */
+body {
+  background-color: var(--color-light-bg);
+  color: var(--color-light-text);
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  padding: 0;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+body.dark-body {
+  background-color: var(--color-dark-bg);
+  color: var(--color-dark-text);
+}
+
+/* Center div */
 .center-div {
-  background-color: var(--div-bg-color);
-  padding: 20px;
+  padding: 2rem;
+  margin: 2rem auto;
+  max-width: 600px;
+  border-radius: 10px;
+  background-color: var(--color-light-div);
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+.center-div.add-bg-color {
+  background-color: var(--color-dark-div);
+  color: var(--color-dark-text);
+}
+
+/* theme-button */
+.theme-button {
+  margin: 2%;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, color 0.3s ease;
+  background-color: var(--color-light-btn);
+  color: var(--color-light-text);
+  font-weight: bold;
+}
+
+body.dark-body .theme-button,
+.center-div.add-bg-color .theme-button {
+  background-color: var(--color-dark-btn);
+  color: var(--color-dark-text);
+}
+
+/* Input */
+input {
+  padding: 0.5rem;
+  border: 1px solid var(--color-light-input-border);
+  border-radius: 6px;
   width: 100%;
-  max-width: 500px;
-  margin: auto;
-  margin-top: 5%;
+  margin-top: 1rem;
+  transition: background-color 0.3s ease, color 0.3s ease,
+    border-color 0.3s ease;
+  background-color: var(--color-light-input);
+  color: var(--color-light-text);
+}
+
+body.dark-body input,
+.center-div.add-bg-color input {
+  background-color: var(--color-dark-input);
+  color: var(--color-dark-text);
+  border-color: var(--color-dark-input-border);
+}
+
+/* Add Task Button */
+.add-task-button {
+  margin: 5%;
+  padding: 0.6rem 1.2rem;
+  background-color: var(--color-light-btn);
+  color: var(--color-light-text);
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect */
+.add-task-button:hover {
+  background-color: #dcdcdc; /* slightly darker in light mode */
+  transform: translateY(-2px);
+}
+
+/* Active / click effect */
+.add-task-button:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Dark mode */
+body.dark-body .add-task-button,
+.center-div.add-bg-color .add-task-button {
+  background-color: var(--color-dark-btn);
+  color: var(--color-dark-text);
+}
+
+body.dark-body .add-task-button:hover,
+.center-div.add-bg-color .add-task-button:hover {
+  background-color: #444; /* slightly lighter than dark-btn */
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .add-task-button {
+    width: 100%;
+    padding: 0.8rem;
+    font-size: 0.95rem;
+  }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .center-div {
+    margin: 1rem;
+    padding: 1.5rem;
+  }
+
+  .theme-button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .center-div {
+    padding: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  .theme-button {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
 }
